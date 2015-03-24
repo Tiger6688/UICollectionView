@@ -43,6 +43,7 @@ static CGFloat const SVInfiniteScrollingViewHeight = 60;
 
 #pragma mark - UIScrollView (SVInfiniteScrollingView)
 #import <objc/runtime.h>
+#import "UIScrollView+Common.h"
 
 static char UIScrollViewInfiniteScrollingView;
 UIEdgeInsets scrollViewOriginalContentInsets;
@@ -52,7 +53,6 @@ UIEdgeInsets scrollViewOriginalContentInsets;
 @dynamic infiniteScrollingView;
 
 - (void)addInfiniteScrollingWithActionHandler:(void (^)(void))actionHandler {
-    
     if(!self.infiniteScrollingView) {
         SVInfiniteScrollingView *view = [[SVInfiniteScrollingView alloc] initWithFrame:CGRectMake(0, self.contentSize.height, self.bounds.size.width, SVInfiniteScrollingViewHeight)];
         view.infiniteScrollingHandler = actionHandler;
@@ -192,9 +192,11 @@ UIEdgeInsets scrollViewOriginalContentInsets;
 }
 
 - (void)scrollViewDidScroll:(CGPoint)contentOffset {
-    if(self.state != SVInfiniteScrollingStateLoading && self.enabled) {
-        CGFloat scrollViewContentHeight = self.scrollView.contentSize.height;
-        CGFloat scrollOffsetThreshold = scrollViewContentHeight-self.scrollView.bounds.size.height;
+    
+    CGFloat scrollViewContentHeight = self.scrollView.contentSize.height;
+    CGFloat scrollOffsetThreshold = scrollViewContentHeight-self.scrollView.bounds.size.height;
+    
+    if(self.state != SVInfiniteScrollingStateLoading && self.enabled && scrollOffsetThreshold >= -self.scrollView.topNavigationBarHeight) {
         
         if(!self.scrollView.isDragging && self.state == SVInfiniteScrollingStateTriggered)
             self.state = SVInfiniteScrollingStateLoading;

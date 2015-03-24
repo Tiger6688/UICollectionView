@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1806E97E1AC0130500621588 /* UIScrollView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 1806E97D1AC0130500621588 /* UIScrollView+Common.m */; };
 		18744B1F1AB681DA00234CB3 /* SVCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18744B1E1AB681DA00234CB3 /* SVCollectionViewController.m */; };
 		18744B271AB6842600234CB3 /* RHGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18744B251AB6842600234CB3 /* RHGoodsCell.m */; };
 		18A737C11ABBC41D00BB344B /* RHGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A737C01ABBC41D00BB344B /* RHGoodsCell.xib */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1806E97C1AC0130500621588 /* UIScrollView+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Common.h"; sourceTree = "<group>"; };
+		1806E97D1AC0130500621588 /* UIScrollView+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Common.m"; sourceTree = "<group>"; };
 		18744B1D1AB681DA00234CB3 /* SVCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCollectionViewController.h; sourceTree = "<group>"; };
 		18744B1E1AB681DA00234CB3 /* SVCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCollectionViewController.m; sourceTree = "<group>"; };
 		18744B241AB6842600234CB3 /* RHGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHGoodsCell.h; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				22E0D93B1545EE7600BB6BB5 /* UIScrollView+SVPullToRefresh.m */,
 				2288145F16047C06005C6461 /* UIScrollView+SVInfiniteScrolling.h */,
 				2288146016047C06005C6461 /* UIScrollView+SVInfiniteScrolling.m */,
+				1806E97C1AC0130500621588 /* UIScrollView+Common.h */,
+				1806E97D1AC0130500621588 /* UIScrollView+Common.m */,
 			);
 			name = SVPullToRefresh;
 			path = ../SVPullToRefresh;
@@ -210,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E0D9251545EE5B00BB6BB5 /* main.m in Sources */,
+				1806E97E1AC0130500621588 /* UIScrollView+Common.m in Sources */,
 				18744B1F1AB681DA00234CB3 /* SVCollectionViewController.m in Sources */,
 				22E0D9291545EE5B00BB6BB5 /* SVAppDelegate.m in Sources */,
 				18744B271AB6842600234CB3 /* RHGoodsCell.m in Sources */,

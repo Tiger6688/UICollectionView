@@ -31,7 +31,7 @@
 {
     _canDelete = NO;
     _dataSource = [NSMutableArray array];
-    for(int i=0; i<8; i++)
+    for(int i=0; i<10; i++)
         [self.dataSource addObject:[NSDate dateWithTimeIntervalSinceNow:20]];
 }
 
@@ -58,6 +58,8 @@
     _collectionView.alwaysBounceVertical = YES;
     [self.view addSubview:_collectionView];
     
+    //设置顶部导航栏的高度
+    _collectionView.topNavigationBarHeight = 65;
     
     __weak SVCollectionViewController *weakSelf = self;
     // setup pull-to-refresh
@@ -79,10 +81,9 @@
     }];
     //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, weakSelf.bounds.size.width, 50)];
     //    [weakSelf.collectionView.pullToRefreshView setCustomView:view forState:SVPullToRefreshStateAll];
-    [weakSelf.collectionView.pullToRefreshView setTitle:@"下拉刷新" forState:SVPullToRefreshStateStopped];
-    [weakSelf.collectionView.pullToRefreshView setTitle:@"松开即可刷新" forState:SVPullToRefreshStateTriggered];
-    [weakSelf.collectionView.pullToRefreshView setTitle:@"正在加载" forState:SVPullToRefreshStateLoading];
-
+    [_collectionView.pullToRefreshView setTitle:@"下拉刷新" forState:SVPullToRefreshStateStopped];
+    [_collectionView.pullToRefreshView setTitle:@"松开即可刷新" forState:SVPullToRefreshStateTriggered];
+    [_collectionView.pullToRefreshView setTitle:@"正在加载" forState:SVPullToRefreshStateLoading];
 }
 
 

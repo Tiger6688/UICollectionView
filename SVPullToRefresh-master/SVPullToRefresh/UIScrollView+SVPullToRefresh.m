@@ -58,6 +58,7 @@ static CGFloat const SVPullToRefreshViewHeight = 60;
 
 #pragma mark - UIScrollView (SVPullToRefresh)
 #import <objc/runtime.h>
+#import "UIScrollView+Common.h"
 
 static char UIScrollViewPullToRefreshView;
 
@@ -84,7 +85,7 @@ static char UIScrollViewPullToRefreshView;
         view.scrollView = self;
         [self addSubview:view];
         
-        view.originalTopInset = self.contentInset.top + 65;
+        view.originalTopInset = self.contentInset.top + self.topNavigationBarHeight;
         view.originalBottomInset = self.contentInset.bottom;
         view.position = position;
         self.pullToRefreshView = view;
