@@ -120,7 +120,7 @@ static RHCollectionLayout currentLayout;
     if(currentLayout == RHCollectionLayoutTable)
     {
         LineLayout *lineLayout = [[LineLayout alloc] init];
-        _collectionView.collectionViewLayout = lineLayout;
+        [_collectionView setCollectionViewLayout:lineLayout animated:YES];
         currentLayout = RHCollectionLayoutVerticalLine;
     }
     else if (currentLayout == RHCollectionLayoutVerticalLine)
@@ -128,7 +128,7 @@ static RHCollectionLayout currentLayout;
         UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
         flowLayout.itemSize=[RHGoodsCell cellSize];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        _collectionView.collectionViewLayout = flowLayout;
+        [_collectionView setCollectionViewLayout:flowLayout animated:YES];
         currentLayout = RHCollectionLayoutTable;
     }
 }
