@@ -9,6 +9,7 @@
 #import "SVCollectionViewController.h"
 #import "RHGoodsCell.h"
 #import "SVPullToRefresh.h"
+#import "LineLayout.h"
 
 @interface SVCollectionViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,RHGoodsCellDelegate>
 
@@ -17,6 +18,8 @@
 @property (nonatomic, strong)NSMutableArray *dataSource;
 
 @end
+
+static RHCollectionLayout currentLayout;
 
 @implementation SVCollectionViewController
 
@@ -31,7 +34,7 @@
 {
     _canDelete = NO;
     _dataSource = [NSMutableArray array];
-    for(int i=0; i<10; i++)
+    for(int i=0; i<16; i++)
         [self.dataSource addObject:[NSDate dateWithTimeIntervalSinceNow:20]];
 }
 
@@ -40,16 +43,19 @@
     self.navigationItem.title = @"我的收藏";
     UIBarButtonItem *deleteBtnItem =[[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonItemStyleDone target:self action:@selector(refreshUI:)];
     self.navigationItem.rightBarButtonItem = deleteBtnItem;
+    UIBarButtonItem *changeBtnItem = [[UIBarButtonItem alloc] initWithTitle:@"变换" style:UIBarButtonItemStylePlain target:self action:@selector(changeUILayout:)];
+    self.navigationItem.leftBarButtonItem = changeBtnItem;
 }
 
 -(void)initView
 {
+    currentLayout = RHCollectionLayoutTable;
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
-    flowLayout.itemSize=CGSizeMake(100,100);
+    flowLayout.itemSize=[RHGoodsCell cellSize];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) collectionViewLayout:flowLayout];
     //注册class
-    //    [_collectionView registerClass:[RHGoodsCell class] forCellWithReuseIdentifier:[RHGoodsCell cellIdentifier]];
+//        [_collectionView registerClass:[RHGoodsCell class] forCellWithReuseIdentifier:[RHGoodsCell cellIdentifier]];
     //注册nib
     [_collectionView registerNib:[UINib nibWithNibName:@"RHGoodsCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:[RHGoodsCell cellIdentifier]];
     _collectionView.dataSource = self;
@@ -64,7 +70,7 @@
     __weak SVCollectionViewController *weakSelf = self;
     // setup pull-to-refresh
     [_collectionView addPullToRefreshWithActionHandler:^{
-        int64_t delayInSeconds = 2.0;
+        int64_t delayInSeconds = 1.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [weakSelf.collectionView.pullToRefreshView stopAnimating];
@@ -73,7 +79,7 @@
     
     //     setup infinite scrolling
     [_collectionView addInfiniteScrollingWithActionHandler:^{
-        int64_t delayInSeconds = 2.0;
+        int64_t delayInSeconds = 1.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [weakSelf.collectionView.infiniteScrollingView stopAnimating];
@@ -106,6 +112,34 @@
     else
     {
         button.title = @"删除";
+    }
+}
+
+-(void)changeUILayout:(id)sender
+{
+    if(currentLayout == RHCollectionLayoutTable)
+    {
+        LineLayout *lineLayout = [[LineLayout alloc] init];
+        _collectionView.collectionViewLayout = lineLayout;
+        currentLayout = RHCollectionLayoutVerticalLine;
+    }
+    else if (currentLayout == RHCollectionLayoutVerticalLine)
+    {
+        UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
+        flowLayout.itemSize=[RHGoodsCell cellSize];
+        [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+        _collectionView.collectionViewLayout = flowLayout;
+        currentLayout = RHCollectionLayoutTable;
+    }
+}
+#pragma mark -
+#pragma mark UIViewController
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+duration:(NSTimeInterval)duration
+{
+    if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight || toInterfaceOrientation == UIInterfaceOrientationPortrait)
+    {
+        _collectionView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
     }
 }
 
@@ -146,7 +180,6 @@
         theAnimation.fillMode = kCAFillModeForwards;
         [cell.baseView.layer addAnimation:theAnimation forKey:@"animateTransform"];
     }
-    //    [cell.deleteBtn addTarget:self action:<#(SEL)#> forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 

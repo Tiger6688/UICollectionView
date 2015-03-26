@@ -19,6 +19,7 @@
 
 +(NSString*)cellIdentifier;
 +(id)loadFromXib;
++(CGSize)cellSize;
 
 @property (nonatomic, assign) id <RHGoodsCellDelegate> delegate;
 

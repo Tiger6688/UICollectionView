@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum{
+    RHCollectionLayoutTable,
+    RHCollectionLayoutVerticalLine
+}RHCollectionLayout;
+
 @interface SVCollectionViewController : UIViewController
 
 @end

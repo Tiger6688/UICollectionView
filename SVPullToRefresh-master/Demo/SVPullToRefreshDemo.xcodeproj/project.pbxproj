@@ -11,6 +11,7 @@
 		18744B1F1AB681DA00234CB3 /* SVCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18744B1E1AB681DA00234CB3 /* SVCollectionViewController.m */; };
 		18744B271AB6842600234CB3 /* RHGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18744B251AB6842600234CB3 /* RHGoodsCell.m */; };
 		18A737C11ABBC41D00BB344B /* RHGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A737C01ABBC41D00BB344B /* RHGoodsCell.xib */; };
+		18BC17251AC3A4400077108D /* LineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BC17241AC3A4400077108D /* LineLayout.m */; };
 		22E0D9191545EE5B00BB6BB5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E0D9181545EE5B00BB6BB5 /* UIKit.framework */; };
 		22E0D91B1545EE5B00BB6BB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E0D91A1545EE5B00BB6BB5 /* Foundation.framework */; };
 		22E0D91D1545EE5B00BB6BB5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E0D91C1545EE5B00BB6BB5 /* CoreGraphics.framework */; };
@@ -30,6 +31,8 @@
 		18744B241AB6842600234CB3 /* RHGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHGoodsCell.h; sourceTree = "<group>"; };
 		18744B251AB6842600234CB3 /* RHGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHGoodsCell.m; sourceTree = "<group>"; };
 		18A737C01ABBC41D00BB344B /* RHGoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RHGoodsCell.xib; sourceTree = "<group>"; };
+		18BC17231AC3A4400077108D /* LineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineLayout.h; sourceTree = "<group>"; };
+		18BC17241AC3A4400077108D /* LineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineLayout.m; sourceTree = "<group>"; };
 		226989041639F55E00FCBB3B /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		2288145F16047C06005C6461 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		2288146016047C06005C6461 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -82,6 +85,15 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		18BC17221AC3A41E0077108D /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				18BC17231AC3A4400077108D /* LineLayout.h */,
+				18BC17241AC3A4400077108D /* LineLayout.m */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
 		22E0D9091545EE5B00BB6BB5 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +126,7 @@
 		22E0D91E1545EE5B00BB6BB5 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				18BC17221AC3A41E0077108D /* Layout */,
 				186A2EB51ABFBD2A00AB56E7 /* Controller */,
 				18744B201AB683F000234CB3 /* View */,
 				22E0D9271545EE5B00BB6BB5 /* SVAppDelegate.h */,
@@ -219,6 +232,7 @@
 				18744B1F1AB681DA00234CB3 /* SVCollectionViewController.m in Sources */,
 				22E0D9291545EE5B00BB6BB5 /* SVAppDelegate.m in Sources */,
 				18744B271AB6842600234CB3 /* RHGoodsCell.m in Sources */,
+				18BC17251AC3A4400077108D /* LineLayout.m in Sources */,
 				22E0D93D1545EE7600BB6BB5 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				22FDEC9D16390CC800DB53A8 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 			);
